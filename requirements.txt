@@ -1,16 +1,10 @@
-# Core ML & Data
-torch>=2.0.0
-torchvision>=0.15.0
-transformers>=4.30.0
-numpy
-
-# Explainable AI
-captum>=0.6.0
-
-# Dashboard & Visualization
-gradio>=3.40.0
-Pillow>=9.0.0
+# requirements.txt - UPDATED FOR CURRENT PYTORCH VERSIONS
+torch>=2.2.0,<2.9.0
+torchvision>=0.17.0,<0.19.0
+transformers>=4.35.0
+captum>=0.7.0
+gradio>=4.19.0
+Pillow>=10.0.0
 matplotlib>=3.7.0
-
-# Utilities (for potential image handling)
-requests>=2.25.0
+numpy>=1.24.0
+requests>=2.28.0
