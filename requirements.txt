@@ -1,0 +1,16 @@
+# Core ML & Data
+torch>=2.0.0
+torchvision>=0.15.0
+transformers>=4.30.0
+numpy
+
+# Explainable AI
+captum>=0.6.0
+
+# Dashboard & Visualization
+gradio>=3.40.0
+Pillow>=9.0.0
+matplotlib>=3.7.0
+
+# Utilities (for potential image handling)
+requests>=2.25.0
