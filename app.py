@@ -337,7 +337,7 @@ with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="ViT Auditing Toolk
             border: 1px solid rgba(99, 102, 241, 0.15);
         ">
             <h2 style="font-size: 1.75rem; font-weight: 700; color: #e0e7ff; margin-bottom: 1rem;">
-                🛠️ About This Toolkit
+                �️ About This Toolkit
             </h2>
             
             <p style="color: #94a3b8; line-height: 1.8; font-size: 1.05rem; margin-bottom: 1.5rem;">
@@ -383,6 +383,122 @@ with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="ViT Auditing Toolk
         """
     )
     
+    # Quick Start Guide
+    gr.HTML(
+        """
+        <div style="
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(99, 102, 241, 0.25);
+        ">
+            <h2 style="font-size: 1.5rem; font-weight: 700; color: #e0e7ff; margin-bottom: 1.5rem;">
+                🚀 Quick Start Guide
+            </h2>
+            
+            <div style="display: grid; gap: 1rem;">
+                <div style="display: flex; align-items: start; gap: 1rem;">
+                    <div style="
+                        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+                        border-radius: 50%;
+                        width: 32px;
+                        height: 32px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 700;
+                        color: white;
+                        flex-shrink: 0;
+                    ">1</div>
+                    <div>
+                        <strong style="color: #c4b5fd; font-size: 1.05rem;">Select a Model</strong>
+                        <p style="color: #94a3b8; margin-top: 0.25rem; line-height: 1.6;">
+                            Choose a Vision Transformer model from the dropdown and click "Load Model" button
+                        </p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: start; gap: 1rem;">
+                    <div style="
+                        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+                        border-radius: 50%;
+                        width: 32px;
+                        height: 32px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 700;
+                        color: white;
+                        flex-shrink: 0;
+                    ">2</div>
+                    <div>
+                        <strong style="color: #c4b5fd; font-size: 1.05rem;">Upload Your Image</strong>
+                        <p style="color: #94a3b8; margin-top: 0.25rem; line-height: 1.6;">
+                            Navigate to any tab and upload an image you want to analyze
+                        </p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: start; gap: 1rem;">
+                    <div style="
+                        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+                        border-radius: 50%;
+                        width: 32px;
+                        height: 32px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 700;
+                        color: white;
+                        flex-shrink: 0;
+                    ">3</div>
+                    <div>
+                        <strong style="color: #c4b5fd; font-size: 1.05rem;">Choose Analysis Type</strong>
+                        <p style="color: #94a3b8; margin-top: 0.25rem; line-height: 1.6;">
+                            Select from 4 tabs: Basic Explainability, Counterfactual Analysis, Confidence Calibration, or Bias Detection
+                        </p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: start; gap: 1rem;">
+                    <div style="
+                        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+                        border-radius: 50%;
+                        width: 32px;
+                        height: 32px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 700;
+                        color: white;
+                        flex-shrink: 0;
+                    ">4</div>
+                    <div>
+                        <strong style="color: #c4b5fd; font-size: 1.05rem;">Run Analysis</strong>
+                        <p style="color: #94a3b8; margin-top: 0.25rem; line-height: 1.6;">
+                            Adjust settings if needed, then click the analysis button to see results and visualizations
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="
+                margin-top: 1.5rem;
+                padding: 1rem;
+                background: rgba(139, 92, 246, 0.1);
+                border-radius: 12px;
+                border-left: 4px solid #8b5cf6;
+            ">
+                <p style="color: #c4b5fd; margin: 0; font-size: 0.95rem;">
+                    💡 <strong>Tip:</strong> Start with "Basic Explainability" to understand what your model sees, 
+                    then explore advanced auditing features in other tabs.
+                </p>
+            </div>
+        </div>
+        """
+    )
+    
     # Model selection (shared across all tabs)
     with gr.Row():
         with gr.Column(scale=3):
@@ -393,15 +509,15 @@ with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="ViT Auditing Toolk
                 info="Choose which Vision Transformer model to use"
             )
         
-        with gr.Column(scale=1):
+        with gr.Column(scale=3):
+            model_status = gr.Textbox(
+                label="📡 Model Status", 
+                interactive=False,
+                placeholder="Select a model and click 'Load Model' to begin..."
+            )
+        
+        with gr.Column(scale=2):
             load_btn = gr.Button("🔄 Load Model", variant="primary", size="lg")
-    
-    with gr.Row():
-        model_status = gr.Textbox(
-            label="📡 Model Status", 
-            interactive=False,
-            placeholder="Select a model and click 'Load Model' to begin..."
-        )
     
     load_btn.click(
         fn=lambda model: load_selected_model(SUPPORTED_MODELS[model]),
@@ -446,19 +562,23 @@ with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="ViT Auditing Toolk
                             layer_index = gr.Slider(
                                 minimum=0, maximum=11, value=6, step=1,
                                 label="Layer Index",
-                                info="Which transformer layer to visualize"
+                                info="Which transformer layer to visualize (0-11)"
                             )
+                        
+                        with gr.Row():
                             head_index = gr.Slider(
                                 minimum=0, maximum=11, value=0, step=1,
                                 label="Head Index",
-                                info="Which attention head to visualize"
+                                info="Which attention head to visualize (0-11)"
                             )
                     
                     analyze_btn = gr.Button("🚀 Analyze Image", variant="primary", size="lg")
                     status_output = gr.Textbox(
                         label="📊 Analysis Status", 
                         interactive=False,
-                        placeholder="Upload an image and click 'Analyze Image' to start..."
+                        placeholder="Upload an image and click 'Analyze Image' to start...",
+                        lines=4,
+                        max_lines=6
                     )
                 
                 with gr.Column(scale=2):
@@ -505,8 +625,9 @@ with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="ViT Auditing Toolk
                         patch_size = gr.Slider(
                             minimum=16, maximum=64, value=32, step=16,
                             label="🔲 Patch Size",
-                            info="Size of perturbation patches (larger = fewer patches)"
+                            info="Size of perturbation patches - 16, 32, 48, or 64 pixels"
                         )
+                        
                         perturbation_type = gr.Dropdown(
                             choices=["blur", "blackout", "gray", "noise"],
                             value="blur",
@@ -526,7 +647,9 @@ with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="ViT Auditing Toolk
                     cf_status_output = gr.Textbox(
                         label="📊 Analysis Status", 
                         interactive=False,
-                        placeholder="Upload an image and click to start counterfactual analysis..."
+                        placeholder="Upload an image and click to start counterfactual analysis...",
+                        lines=5,
+                        max_lines=8
                     )
                 
                 with gr.Column(scale=2):
@@ -574,7 +697,7 @@ with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="ViT Auditing Toolk
                         n_bins = gr.Slider(
                             minimum=5, maximum=20, value=10, step=1,
                             label="📊 Number of Bins",
-                            info="Granularity of calibration analysis"
+                            info="Granularity of calibration analysis (5-20)"
                         )
                         
                         gr.Markdown("""
@@ -588,7 +711,9 @@ with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="ViT Auditing Toolk
                     cal_status_output = gr.Textbox(
                         label="📊 Analysis Status", 
                         interactive=False,
-                        placeholder="Upload an image and click to analyze calibration..."
+                        placeholder="Upload an image and click to analyze calibration...",
+                        lines=5,
+                        max_lines=8
                     )
                 
                 with gr.Column(scale=2):
@@ -644,7 +769,9 @@ with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="ViT Auditing Toolk
                     bias_status_output = gr.Textbox(
                         label="📊 Analysis Status", 
                         interactive=False,
-                        placeholder="Upload an image and click to detect potential biases..."
+                        placeholder="Upload an image and click to detect potential biases...",
+                        lines=6,
+                        max_lines=10
                     )
                 
                 with gr.Column(scale=2):
