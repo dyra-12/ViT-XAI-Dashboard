@@ -79,8 +79,15 @@ def predict_image(image, model, processor, top_k=5):
         top_probs = top_probs.cpu().numpy()
         top_indices = top_indices.cpu().numpy()
 
-        # Convert class indices to human-readable labels using model's label mapping
-        top_labels = [model.config.id2label[idx] for idx in top_indices]
+        # Convert class indices to human-readable labels using model's label mapping when available
+        id2label = None
+        if hasattr(model, "config") and hasattr(model.config, "id2label"):
+            id2label = model.config.id2label
+
+        top_labels = [
+            (id2label.get(int(idx), f"class_{int(idx)}") if isinstance(id2label, dict) else f"class_{int(idx)}")
+            for idx in top_indices
+        ]
 
         return top_probs, top_indices, top_labels
 

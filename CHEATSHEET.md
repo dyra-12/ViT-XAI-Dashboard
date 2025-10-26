@@ -138,7 +138,11 @@ demo.launch(server_port=7860)  # Change 7860 to your port
 SUPPORTED_MODELS = {
     "ViT-Base": "google/vit-base-patch16-224",
     "ViT-Large": "google/vit-large-patch16-224",
-    "Your-Model": "your-username/your-vit-model",  # Add this
+    # New additions
+    "ResNet-50": "microsoft/resnet-50",
+    "Swin Transformer": "microsoft/swin-base-patch4-window7-224",
+    "DeiT": "facebook/deit-base-patch16-224",
+    "EfficientNet": "google/efficientnet-b7",
 }
 ```
 

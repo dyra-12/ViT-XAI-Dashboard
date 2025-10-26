@@ -12,7 +12,7 @@
 
 [🚀 Live Demo](#) | [📖 Documentation](#features) | [💡 Examples](#usage-guide) | [🤝 Contributing](#contributing)
 
-<img src="https://via.placeholder.com/800x400/0f1419/6366f1?text=ViT+Auditing+Toolkit+Dashboard" alt="Dashboard Preview" width="800"/>
+<img src="assets/dashboard.png" alt="Dashboard Preview" width="800"/>
 
 </div>
 
@@ -424,27 +424,6 @@ See `requirements.txt` for complete list with version constraints.
 
 ---
 
-## 🛣️ Roadmap
-
-### Upcoming Features
-- [ ] Support for additional ViT variants (DeiT, BEiT, Swin Transformer)
-- [ ] Batch processing for multiple images
-- [ ] Export functionality for reports and visualizations
-- [ ] Custom model upload support
-- [ ] Comparative analysis across multiple models
-- [ ] Integration with model monitoring platforms
-- [ ] Advanced bias metrics (demographic parity, equalized odds)
-- [ ] Adversarial robustness testing
-- [ ] API endpoint for programmatic access
-
-### Long-term Vision
-- Multi-modal transformer support (CLIP, ViLT)
-- Video analysis capabilities
-- Automated auditing pipelines
-- Integration with MLOps platforms
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Here's how you can help:
@@ -516,66 +495,11 @@ furnished to do so, subject to the following conditions:
 
 ---
 
-## 📚 References & Citations
-
-### Academic Papers
-
-1. **Vision Transformers**  
-   Dosovitskiy, A., et al. (2021). "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale." *ICLR 2021*.
-
-2. **GradCAM**  
-   Selvaraju, R. R., et al. (2017). "Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization." *ICCV 2017*.
-
-3. **SHAP**  
-   Lundberg, S. M., & Lee, S. I. (2017). "A Unified Approach to Interpreting Model Predictions." *NeurIPS 2017*.
-
-4. **Model Calibration**  
-   Guo, C., et al. (2017). "On Calibration of Modern Neural Networks." *ICML 2017*.
-
-### Related Tools
-
-- [Captum](https://captum.ai/): Model interpretability for PyTorch
-- [Hugging Face Transformers](https://huggingface.co/transformers/): State-of-the-art NLP and Vision models
-- [Gradio](https://gradio.app/): Fast ML demo creation
-
-### Citation
-
-If you use this toolkit in your research, please cite:
-
-```bibtex
-@software{vit_auditing_toolkit_2024,
-  title={ViT Auditing Toolkit: Comprehensive Explainability for Vision Transformers},
-  author={dyra-12},
-  year={2024},
-  url={https://github.com/dyra-12/ViT-XAI-Dashboard}
-}
-```
-
----
-
-## 🙏 Acknowledgments
-
-- **Hugging Face** for providing pre-trained ViT models and the Transformers library
-- **Captum Team** for the excellent interpretability library
-- **Gradio Team** for the intuitive ML interface framework
-- **PyTorch Community** for the robust deep learning ecosystem
-- All contributors and users who provide feedback and improvements
-
----
-
-## 📧 Contact & Support
+##  Contact & Support
 
 - **GitHub Issues**: [Report bugs or request features](https://github.com/dyra-12/ViT-XAI-Dashboard/issues)
 - **Discussions**: [Ask questions or share ideas](https://github.com/dyra-12/ViT-XAI-Dashboard/discussions)
 - **Email**: dyra12@example.com
-
----
-
-## 🌟 Star History
-
-If you find this project useful, please consider giving it a ⭐️ on GitHub!
-
-[![Star History Chart](https://api.star-history.com/svg?repos=dyra-12/ViT-XAI-Dashboard&type=Date)](https://star-history.com/#dyra-12/ViT-XAI-Dashboard&Date)
 
 ---
 

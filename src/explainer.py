@@ -51,21 +51,29 @@ def explain_attention(model, processor, image, layer_index=6, head_index=0):
         inputs = processor(images=image, return_tensors="pt")
         inputs = {k: v.to(device) for k, v in inputs.items()}
 
-        # Register hook to capture attention
+        # Register hook to capture attention (supported for ViT/DeiT only)
         hook = AttentionHook()
 
-        # Try different layer access patterns
-        try:
-            # For standard ViT structure
-            target_layer = model.vit.encoder.layer[layer_index].attention.attention
-            handle = target_layer.register_forward_hook(hook)
-        except:
+        # Only support attention visualization for ViT-like architectures
+        if hasattr(model, "vit"):
             try:
-                # Alternative structure
-                target_layer = model.vit.encoder.layers[layer_index].attention.attention
+                # For standard ViT structure
+                target_layer = model.vit.encoder.layer[layer_index].attention.attention
                 handle = target_layer.register_forward_hook(hook)
-            except:
-                raise ValueError(f"Could not access layer {layer_index} for attention hook")
+            except Exception:
+                try:
+                    # Alternative structure
+                    target_layer = model.vit.encoder.layers[layer_index].attention.attention
+                    handle = target_layer.register_forward_hook(hook)
+                except Exception:
+                    raise ValueError(
+                        f"Could not access layer {layer_index} for attention hook"
+                    )
+        else:
+            raise ValueError(
+                "Attention visualization currently supports ViT/DeiT models only. "
+                "Please select a ViT model or use GradCAM/GradientSHAP."
+            )
 
         # Forward pass to capture attention
         with torch.no_grad():
@@ -137,11 +145,8 @@ def explain_gradcam(model, processor, image, target_layer_index=-2):
             outputs = model(input_tensor)
             predicted_class = outputs.logits.argmax(dim=1).item()
 
-        # Get the target layer
-        try:
-            target_layer = model.vit.encoder.layer[target_layer_index].attention.attention
-        except:
-            target_layer = model.vit.encoder.layers[target_layer_index].attention.attention
+        # Get the target layer adaptively across architectures
+        target_layer = _select_gradcam_target_layer(model, target_layer_index)
 
         # Create wrapped model for Captum compatibility
         wrapped_model = ViTWrapper(model)
@@ -152,12 +157,19 @@ def explain_gradcam(model, processor, image, target_layer_index=-2):
         # Generate attribution - handle tuple output
         attribution = gradcam.attribute(input_tensor, target=predicted_class)
 
-        # FIX: Handle tuple output by taking the first element
+        # Handle tuple output by taking the first element
         if isinstance(attribution, tuple):
             attribution = attribution[0]
 
-        # Convert attribution to heatmap
-        attribution = attribution.squeeze().cpu().detach().numpy()
+        # If attribution has channel dimension, aggregate over channels
+        if isinstance(attribution, torch.Tensor):
+            att = attribution.detach().cpu()
+            if att.dim() == 4:  # (B, C, H, W)
+                att = att.sum(dim=1)  # (B, H, W)
+            att = att.squeeze(0)  # (H, W)
+            attribution = att.numpy()
+        else:
+            attribution = np.array(attribution)
 
         # Normalize attribution
         if attribution.max() > attribution.min():
@@ -169,7 +181,7 @@ def explain_gradcam(model, processor, image, target_layer_index=-2):
 
         # Resize heatmap to match original image
         original_size = image.size
-        heatmap = Image.fromarray((attribution * 255).astype(np.uint8))
+        heatmap = Image.fromarray((np.clip(attribution, 0, 1) * 255).astype(np.uint8))
         heatmap = heatmap.resize(original_size, Image.Resampling.LANCZOS)
         heatmap = np.array(heatmap)
 
@@ -220,6 +232,51 @@ def explain_gradcam(model, processor, image, target_layer_index=-2):
         )
         ax.set_title("GradCAM Error")
         return fig, image
+
+
+def _select_gradcam_target_layer(model, target_layer_index):
+    """Best-effort selection of a target layer for GradCAM across architectures."""
+    # 1) ViT / DeiT: use attention layer as before
+    if hasattr(model, "vit"):
+        try:
+            return model.vit.encoder.layer[target_layer_index].attention.attention
+        except Exception:
+            return model.vit.encoder.layers[target_layer_index].attention.attention
+
+    # 2) ResNet (HF): try final bottleneck/conv in layer4
+    if hasattr(model, "resnet"):
+        res = model.resnet
+        try:
+            blk = res.layer4[-1]
+            # Prefer the last conv if exists
+            for attr in ["conv3", "conv2", "conv1"]:
+                if hasattr(blk, attr):
+                    return getattr(blk, attr)
+            return blk
+        except Exception:
+            pass
+
+    # 3) Swin (HF): try last attention block; fallback to patch embedding conv
+    if hasattr(model, "swin"):
+        try:
+            # Common pattern: encoder.layers[-1].blocks[-1].attention
+            return model.swin.encoder.layers[-1].blocks[-1].attention
+        except Exception:
+            try:
+                return model.swin.embeddings.patch_embeddings.projection
+            except Exception:
+                pass
+
+    # 4) Generic fallback: last Conv2d found in the model
+    last_conv = None
+    for m in model.modules():
+        if isinstance(m, torch.nn.Conv2d):
+            last_conv = m
+    if last_conv is not None:
+        return last_conv
+
+    # As a final fallback, just return the model (may not work with GradCAM, but avoids attribute errors)
+    return model
 
 
 def explain_gradient_shap(model, processor, image, n_samples=5):
