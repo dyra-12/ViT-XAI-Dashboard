@@ -16,13 +16,30 @@
 
 </div>
 
----
 
 ## 🌟 Overview
 
 The **ViT Auditing Toolkit** is an advanced, interactive dashboard designed to help researchers, ML practitioners, and AI auditors understand, validate, and improve Vision Transformer (ViT) models. It provides a comprehensive suite of explainability techniques and auditing tools through an intuitive web interface.
 
-### 🎭 Why This Toolkit?
+### � Purpose & Scope
+
+This toolkit is designed as an **Explainable AI (XAI) and Human-Centered AI (HCAI) analysis tool** to help you:
+
+- **Understand model decisions** through visualization and interpretation
+- **Identify potential issues** in model behavior before deployment
+- **Explore model robustness** through systematic testing
+- **Analyze fairness** across different data characteristics
+- **Build trust** in AI systems through transparency
+
+**Important**: This is an **exploratory and educational tool** for model analysis and research. For production-level auditing:
+- Use comprehensive, representative validation datasets (not single images)
+- Conduct systematic bias testing with diverse demographic groups
+- Combine automated analysis with domain expert review
+- Follow established AI fairness and auditing frameworks
+
+We encourage researchers and practitioners to use this toolkit as a **starting point** for deeper investigation into model behavior, complementing it with rigorous testing protocols and domain expertise.
+
+### �🎭 Why This Toolkit?
 
 - **🔍 Transparency**: Understand what your ViT models actually "see" and learn
 - **✅ Validation**: Verify model reliability through systematic testing
@@ -74,20 +91,43 @@ Try the toolkit instantly on Hugging Face Spaces:
 
 ---
 
-## 📸 Screenshots
+## �️ Test Images Included
+
+The project includes **20 curated test images** organized by analysis type:
+
+```bash
+examples/
+├── basic_explainability/    # 5 images - Clear objects for explanation testing
+├── counterfactual/          # 4 images - Centered subjects for robustness testing
+├── calibration/             # 3 images - Varied quality for confidence testing
+├── bias_detection/          # 4 images - Different conditions for fairness testing
+└── general/                 # 4 images - Miscellaneous testing
+```
+
+**Quick Download**: Run `python download_samples.py` to get all test images instantly!
+
+See [examples/README.md](examples/README.md) for detailed image descriptions and testing guidelines.
+
+---
+
+## �📸 Screenshots
 
 <div align="center">
 
 ### Basic Explainability Interface
-<img src="https://via.placeholder.com/700x400/1a1f2e/a5b4fc?text=Attention+Visualization+%26+Predictions" alt="Basic Explainability" width="700"/>
+<img src="assets/basic-explainability-interface.png" alt="Basic Explainability" width="700"/>
 
 ### Counterfactual Analysis
-<img src="https://via.placeholder.com/700x400/1a1f2e/c4b5fd?text=Patch+Perturbation+Analysis" alt="Counterfactual Analysis" width="700"/>
+<img src="assets/counterfactual-analysis.png" alt="Counterfactual Analysis" width="700"/>
 
-### Calibration & Bias Detection
-<img src="https://via.placeholder.com/700x400/1a1f2e/f9a8d4?text=Calibration+%26+Bias+Metrics" alt="Advanced Auditing" width="700"/>
+### Confidence Calibration 
+<img src="assets/confidence-calibration.png" alt="Confidence Calibration" width="700"/>
+
+### Bias Detection
+<img src="assets/bias-detection.png" alt="Bias Detection" width="700"/>
 
 </div>
+
 
 ---
 
@@ -96,48 +136,70 @@ Try the toolkit instantly on Hugging Face Spaces:
 ### Quick Start (3 Steps)
 
 1. **Select a Model**: Choose between ViT-Base or ViT-Large from the dropdown
-2. **Upload Your Image**: Any image you want to analyze (JPG, PNG, etc.)
+2. **Upload Your Image**: Any image you want to analyze (JPG, PNG, etc.) or use provided examples
 3. **Choose Analysis Type**: Select from 4 tabs based on your needs
+
+**💡 Tip**: Use images from the `examples/` directory for quick testing!
 
 ### Detailed Workflow
 
 #### 🔍 For Understanding Predictions:
 ```
 1. Go to "Basic Explainability" tab
-2. Upload your image
+2. Upload your image (try: examples/basic_explainability/cat_portrait.jpg)
 3. Select explanation method (Attention/GradCAM/SHAP)
 4. Adjust layer/head indices if needed
 5. Click "Analyze Image"
 6. View predictions and visual explanations
 ```
 
+**Example Images to Try**:
+- `cat_portrait.jpg` - Clear subject for attention visualization
+- `sports_car.jpg` - Distinct features for GradCAM
+- `bird_flying.jpg` - Dynamic action for SHAP analysis
+
 #### 🔄 For Testing Robustness:
 ```
 1. Go to "Counterfactual Analysis" tab
-2. Upload your image
+2. Upload your image (try: examples/counterfactual/flower.jpg)
 3. Set patch size (16-64 pixels)
 4. Choose perturbation type (blur/blackout/gray/noise)
 5. Click "Run Analysis"
 6. Review sensitivity maps and metrics
 ```
 
+**Example Images to Try**:
+- `face_portrait.jpg` - Test facial feature importance
+- `car_side.jpg` - Identify critical vehicle components
+- `flower.jpg` - Simple object for baseline testing
+
 #### 📊 For Validating Confidence:
 ```
 1. Go to "Confidence Calibration" tab
-2. Upload a sample image
+2. Upload a sample image (try: examples/calibration/clear_panda.jpg)
 3. Adjust number of bins for analysis
 4. Click "Analyze Calibration"
 5. Review calibration curves and metrics
 ```
 
+**Example Images to Try**:
+- `clear_panda.jpg` - High-quality image (high confidence expected)
+- `workspace.jpg` - Complex scene (varied confidence)
+- `outdoor_scene.jpg` - Medium difficulty
+
 #### ⚖️ For Detecting Bias:
 ```
 1. Go to "Bias Detection" tab
-2. Upload a sample image
+2. Upload a sample image (try: examples/bias_detection/dog_daylight.jpg)
 3. Click "Detect Bias"
 4. Compare performance across generated subgroups
 5. Review fairness metrics
 ```
+
+**Example Images to Try**:
+- `dog_daylight.jpg` - Test lighting variations
+- `cat_indoor.jpg` - Indoor vs outdoor performance
+- `urban_scene.jpg` - Environmental bias detection
 
 ---
 
@@ -174,7 +236,20 @@ conda activate vit-audit
 pip install -r requirements.txt
 ```
 
-### Step 4: Run the Application
+### Step 4: Download Test Images (Optional but Recommended)
+
+```bash
+# Download 20 curated test images for all tabs
+python download_samples.py
+
+# Or use the bash script
+chmod +x download_samples.sh
+./download_samples.sh
+```
+
+This creates an `examples/` directory with images organized by tab.
+
+### Step 5: Run the Application
 
 ```bash
 python app.py
@@ -202,6 +277,7 @@ ViT-XAI-Dashboard/
 ├── app.py                      # Main Gradio application
 ├── requirements.txt            # Python dependencies
 ├── README.md                   # This file
+├── download_samples.py         # Script to download test images
 │
 ├── src/
 │   ├── __init__.py
@@ -210,6 +286,13 @@ ViT-XAI-Dashboard/
 │   ├── explainer.py            # XAI methods (Attention, GradCAM, SHAP)
 │   ├── auditor.py              # Advanced auditing tools
 │   └── utils.py                # Helper functions and preprocessing
+│
+├── examples/                   # 20 curated test images
+│   ├── basic_explainability/   # Images for Tab 1 testing
+│   ├── counterfactual/         # Images for Tab 2 testing
+│   ├── calibration/            # Images for Tab 3 testing
+│   ├── bias_detection/         # Images for Tab 4 testing
+│   └── general/                # General purpose test images
 │
 └── tests/
     ├── test_phase1_complete.py # Basic functionality tests
@@ -402,7 +485,17 @@ git push origin feature/your-feature-name
 
 ---
 
-## 📄 License
+## � Additional Resources
+
+- **[QUICKSTART.md](QUICKSTART.md)** - Get started in 5 minutes
+- **[TESTING.md](TESTING.md)** - Comprehensive testing guide with 22 test cases
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Guidelines for contributors
+- **[CHEATSHEET.md](CHEATSHEET.md)** - Quick reference for common tasks
+- **[examples/README.md](examples/README.md)** - Detailed test image guide
+
+---
+
+## �📄 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
