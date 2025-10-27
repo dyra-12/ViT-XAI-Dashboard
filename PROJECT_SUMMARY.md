@@ -91,8 +91,8 @@ Each directory includes a README.md with:
 - Tips for best results
 
 ### 🔧 Download Scripts
-1. **download_samples.py** (6KB) - Python script to download images
-2. **download_samples.sh** (5.2KB) - Bash script alternative
+1. **examples/download_samples.py** (6KB) - Python script to download images
+2. **examples/download_samples.sh** (5.2KB) - Bash script alternative
 
 ---
 

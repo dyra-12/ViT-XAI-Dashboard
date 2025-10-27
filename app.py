@@ -830,4 +830,8 @@ with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="ViT Auditing Toolk
 
 # Launch the application
 if __name__ == "__main__":
-    demo.launch(server_name="localhost", server_port=7860, share=False, show_error=True)
+    import os as _os
+    # Use dynamic host/port for portability (e.g., Hugging Face Spaces)
+    host = "0.0.0.0"
+    port = int(_os.environ.get("PORT", "7860"))
+    demo.launch(server_name=host, server_port=port, share=False, show_error=True)

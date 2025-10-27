@@ -205,7 +205,7 @@ License: MIT
 - **Comments**: Present in HTML sections
 - **Length**: 800+ lines
 
-#### 7. `download_samples.py` ✅
+#### 7. `examples/download_samples.py` ✅
 - **Docstring**: Added at module level
 - **Formatting**: Black + isort applied
 - **Comments**: Added for clarity
@@ -397,7 +397,7 @@ def predict_image(image, model, processor, top_k=5):
 
 ### Black (Code Formatter)
 ```bash
-black src/ app.py download_samples.py --line-length 100
+black src/ app.py examples/download_samples.py --line-length 100
 ```
 
 **Configuration**:
@@ -407,7 +407,7 @@ black src/ app.py download_samples.py --line-length 100
 
 ### isort (Import Sorter)
 ```bash
-isort src/ app.py download_samples.py --profile black
+isort src/ app.py examples/download_samples.py --profile black
 ```
 
 **Configuration**:

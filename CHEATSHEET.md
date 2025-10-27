@@ -7,7 +7,7 @@
 python app.py
 
 # Download sample images
-python download_samples.py
+python examples/download_samples.py
 
 # Run tests
 pytest tests/ -v

@@ -104,7 +104,7 @@ examples/
 └── general/                 # 4 images - Miscellaneous testing
 ```
 
-**Quick Download**: Run `python download_samples.py` to get all test images instantly!
+**Quick Download**: Run `python examples/download_samples.py` to get all test images instantly!
 
 See [examples/README.md](examples/README.md) for detailed image descriptions and testing guidelines.
 
@@ -240,11 +240,11 @@ pip install -r requirements.txt
 
 ```bash
 # Download 20 curated test images for all tabs
-python download_samples.py
+python examples/download_samples.py
 
 # Or use the bash script
-chmod +x download_samples.sh
-./download_samples.sh
+chmod +x examples/download_samples.sh
+./examples/download_samples.sh
 ```
 
 This creates an `examples/` directory with images organized by tab.
@@ -277,7 +277,7 @@ ViT-XAI-Dashboard/
 ├── app.py                      # Main Gradio application
 ├── requirements.txt            # Python dependencies
 ├── README.md                   # This file
-├── download_samples.py         # Script to download test images
+├── examples/download_samples.py         # Script to download test images
 │
 ├── src/
 │   ├── __init__.py
