@@ -1,3 +1,14 @@
+# ---
+title: "ViT Auditing Toolkit"
+emoji: "🎯"
+colorFrom: "indigo"
+colorTo: "cyan"
+sdk: gradio
+sdk_version: "4.19.0"
+app_file: app.py
+pinned: false
+---
+
 # 🎯 ViT Auditing Toolkit
 
 <div align="center">
@@ -10,7 +21,7 @@
 
 **A Comprehensive Explainability and Validation Dashboard for Vision Transformers**
 
-[🚀 Live Demo](https://huggingface.co/spaces/Dyra1204/ViT-Auditing-Toolkit) | [📖 Documentation](#features) | [💡 Examples](#usage-guide) | [🤝 Contributing](#contributing)
+[🚀 Live Demo](#) | [📖 Documentation](#features) | [💡 Examples](#usage-guide) | [🤝 Contributing](#contributing)
 
 <img src="assets/dashboard.png" alt="Dashboard Preview" width="800"/>
 
@@ -21,7 +32,7 @@
 
 The **ViT Auditing Toolkit** is an advanced, interactive dashboard designed to help researchers, ML practitioners, and AI auditors understand, validate, and improve Vision Transformer (ViT) models. It provides a comprehensive suite of explainability techniques and auditing tools through an intuitive web interface.
 
-### 🎯 Purpose & Scope
+### � Purpose & Scope
 
 This toolkit is designed as an **Explainable AI (XAI) and Human-Centered AI (HCAI) analysis tool** to help you:
 
@@ -39,7 +50,7 @@ This toolkit is designed as an **Explainable AI (XAI) and Human-Centered AI (HCA
 
 We encourage researchers and practitioners to use this toolkit as a **starting point** for deeper investigation into model behavior, complementing it with rigorous testing protocols and domain expertise.
 
-### 🎭 Why This Toolkit?
+### �🎭 Why This Toolkit?
 
 - **🔍 Transparency**: Understand what your ViT models actually "see" and learn
 - **✅ Validation**: Verify model reliability through systematic testing
@@ -85,13 +96,13 @@ Identify performance disparities across different data subgroups:
 
 Try the toolkit instantly on Hugging Face Spaces:
 
-### 👉 [Launch Interactive Demo](https://huggingface.co/spaces/Dyra1204/ViT-Auditing-Toolkit)
+### 👉 [Launch Interactive Demo](https://huggingface.co/spaces/YOUR-USERNAME/vit-auditing-toolkit)
 
 *No installation required! Upload an image and start exploring.*
 
 ---
 
-## 🖼️ Test Images Included
+## �️ Test Images Included
 
 The project includes **20 curated test images** organized by analysis type:
 
@@ -110,7 +121,7 @@ See [examples/README.md](examples/README.md) for detailed image descriptions and
 
 ---
 
-## 📸 Screenshots
+## �📸 Screenshots
 
 <div align="center">
 
@@ -472,7 +483,7 @@ git push origin feature/your-feature-name
 
 ---
 
-## 📚 Additional Resources
+## � Additional Resources
 
 - **[QUICKSTART.md](QUICKSTART.md)** - Get started in 5 minutes
 - **[TESTING.md](TESTING.md)** - Comprehensive testing guide with 22 test cases
@@ -482,7 +493,7 @@ git push origin feature/your-feature-name
 
 ---
 
-## 📄 License
+## �📄 License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
