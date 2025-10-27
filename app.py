@@ -339,7 +339,7 @@ with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="ViT Auditing Toolk
             border: 1px solid rgba(99, 102, 241, 0.15);
         ">
             <h2 style="font-size: 1.75rem; font-weight: 700; color: #e0e7ff; margin-bottom: 1rem;">
-                �️ About This Toolkit
+                ℹ️ About This Toolkit
             </h2>
             
             <p style="color: #94a3b8; line-height: 1.8; font-size: 1.05rem; margin-bottom: 1.5rem;">
