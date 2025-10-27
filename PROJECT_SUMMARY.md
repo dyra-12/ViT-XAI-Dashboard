@@ -279,7 +279,7 @@ To understand the codebase:
 
 Things you might want to add later:
 
-- [ ] More ViT model variants (DeiT, BEiT, Swin)
+- [x] More ViT model variants (DeiT, Swin) — added ResNet, Swin, DeiT, EfficientNet support in `model_loader.py`
 - [ ] Batch image processing
 - [ ] Export results as PDF report
 - [ ] Save/load analysis sessions

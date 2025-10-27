@@ -373,16 +373,24 @@ Compares performance across subgroups to identify:
 
 ---
 
-## 🔧 Supported Models
+### 🔧 Supported Models
 
-Currently supported Vision Transformer models from Hugging Face:
+The dashboard now supports multiple architectures (ViT family and others). The models currently exposed in the UI are:
 
-| Model | Parameters | Input Size | Accuracy (ImageNet) |
-|-------|-----------|------------|---------------------|
-| `google/vit-base-patch16-224` | 86M | 224×224 | ~81.3% |
-| `google/vit-large-patch16-224` | 304M | 224×224 | ~82.6% |
+| Display name | Hugging Face ID | Notes |
+|--------------:|-----------------|-------|
+| ViT-Base | `google/vit-base-patch16-224` | ViT — attention visualizations and GradCAM supported |
+| ViT-Large | `google/vit-large-patch16-224` | ViT — attention visualizations and GradCAM supported |
+| ResNet-50 | `microsoft/resnet-50` | CNN — GradCAM supported; attention visualization not applicable |
+| Swin Transformer | `microsoft/swin-base-patch4-window7-224` | Swin — GradCAM supported; attention visualization limited to ViT-style models |
+| DeiT | `facebook/deit-base-patch16-224` | ViT-like — attention visualizations and GradCAM supported |
+| EfficientNet-B7 | `google/efficientnet-b7` | CNN — loaded via Hugging Face when possible; if HF loading triggers a torch.load restriction, the app falls back to `timm` (no torch upgrade required). GradCAM supported; attention visualization not applicable |
 
-**Easy to extend**: Add any Hugging Face ViT model to `src/model_loader.py`
+Notes:
+- Attention visualizations (patch-level attention maps) are meaningful for ViT-style models (ViT, DeiT). For CNNs (ResNet, EfficientNet) and some hierarchical transformers (Swin), the dashboard will use GradCAM or a last-conv fallback instead of patch attention.
+- EfficientNet on the Hugging Face hub can trigger a torch.load security restriction in older torch versions. The toolkit will transparently fall back to a `timm`-based loader to avoid requiring a torch upgrade; this is handled automatically in `src/model_loader.py`.
+
+**Easy to extend**: Add more models to `src/model_loader.py` under `SUPPORTED_MODELS` and they will appear in the app dropdown.
 
 ---
 

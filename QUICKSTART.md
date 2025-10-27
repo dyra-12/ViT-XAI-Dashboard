@@ -97,9 +97,13 @@ http://localhost:7860
 
 ### Step 3: Load a Model
 
-1. In the **"Select Model"** dropdown, choose `ViT-Base`
+1. In the **"Select Model"** dropdown, choose a model (examples: `ViT-Base`, `ViT-Large`, `ResNet-50`, `Swin Transformer`, `DeiT`, `EfficientNet`)
 2. Click the **"🔄 Load Model"** button
-3. Wait for the confirmation: `✅ Model loaded: google/vit-base-patch16-224`
+3. Wait for the confirmation message, e.g. `✅ Model loaded: google/vit-base-patch16-224`
+
+Notes:
+- For ViT/DeiT models you can use Attention Visualization (patch-level attention maps). For ResNet, Swin, and EfficientNet, use GradCAM or GradientSHAP (the UI will still show options but attention maps are ViT-specific).
+- EfficientNet may fall back to a `timm` loader automatically if the HF download triggers a torch security restriction; no torch upgrade is required.
 
 ### Step 4: Analyze Your First Image
 
