@@ -87,7 +87,7 @@ Identify performance disparities across different data subgroups:
 
 Try the toolkit instantly on Hugging Face Spaces:
 
-### 👉 [Launch Interactive Demo](https://huggingface.co/spaces/YOUR-USERNAME/vit-auditing-toolkit)
+### 👉 [Launch Interactive Demo](https://huggingface.co/spaces/Dyra1204/vit-auditing-toolkit)
 
 *No installation required! Upload an image and start exploring.*
 
