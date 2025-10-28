@@ -1,6 +1,7 @@
-# 🎯 ViT Auditing Toolkit
+
 
 <div align="center">
+<img src="assets/dashboard.png" alt="Dashboard Preview" width="800"/>
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.2+-ee4c2c.svg)
@@ -11,8 +12,6 @@
 **A Comprehensive Explainability and Validation Dashboard for Vision Transformers**
 
 [🚀 Live Demo](#live-demo) | [📖 Features](#features) | [💡 Usage Guide](#usage-guide) | [🤝 Contributing](#contributing)
-
-<img src="assets/dashboard.png" alt="Dashboard Preview" width="800"/>
 
 </div>
 
