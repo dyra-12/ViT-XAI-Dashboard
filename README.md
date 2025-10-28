@@ -1,14 +1,3 @@
-# ---
-title: "ViT Auditing Toolkit"
-emoji: "🎯"
-colorFrom: "indigo"
-colorTo: "cyan"
-sdk: gradio
-sdk_version: "4.19.0"
-app_file: app.py
-pinned: false
----
-
 # 🎯 ViT Auditing Toolkit
 
 <div align="center">
@@ -21,7 +10,7 @@ pinned: false
 
 **A Comprehensive Explainability and Validation Dashboard for Vision Transformers**
 
-[🚀 Live Demo](#) | [📖 Documentation](#features) | [💡 Examples](#usage-guide) | [🤝 Contributing](#contributing)
+[🚀 Live Demo](#live-demo) | [📖 Features](#features) | [💡 Usage Guide](#usage-guide) | [🤝 Contributing](#contributing)
 
 <img src="assets/dashboard.png" alt="Dashboard Preview" width="800"/>
 
@@ -60,6 +49,7 @@ We encourage researchers and practitioners to use this toolkit as a **starting p
 
 ---
 
+<a id="features"></a>
 ## ✨ Features
 
 ### 🔬 Basic Explainability
@@ -92,6 +82,7 @@ Identify performance disparities across different data subgroups:
 
 ---
 
+<a id="live-demo"></a>
 ## 🚀 Live Demo
 
 Try the toolkit instantly on Hugging Face Spaces:
@@ -142,6 +133,7 @@ See [examples/README.md](examples/README.md) for detailed image descriptions and
 
 ---
 
+<a id="usage-guide"></a>
 ## 🎯 Usage Guide
 
 ### Quick Start (3 Steps)
@@ -443,6 +435,7 @@ See `requirements.txt` for complete list with version constraints.
 
 ---
 
+<a id="contributing"></a>
 ## 🤝 Contributing
 
 Contributions are welcome! Here's how you can help:
