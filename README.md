@@ -1,5 +1,17 @@
 
 
+---
+sdk: gradio
+sdk_version: "4.19.0"
+app_file: "app.py"
+title: "ViT Auditing Toolkit"
+emoji: "🎯"
+colorFrom: "indigo"
+colorTo: "pink"
+license: "mit"
+pinned: false
+---
+
 <div align="center">
 <img src="assets/dashboard.png" alt="Dashboard Preview" width="800"/>
 
