@@ -9,7 +9,7 @@
 
 **A Comprehensive Explainability and Validation Dashboard for Vision Transformers**
 
-[🚀 Live Demo](#live-demo) | [📖 Features](#features) | [💡 Usage Guide](#usage-guide) | [🤝 Contributing](#contributing)
+[🚀 Live Demo](#live-demo) | [📖 Features](#features) | [💡 Usage Guide](#usage-guide) | [🤝 Contribution](#contributing)
 
 </div>
 
